@@ -10,18 +10,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    @IBOutlet weak var menu: NSMenu!
-    
-    var statusItem: NSStatusItem!
+    var statusItemView: StatusItemView!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let bar = NSStatusBar.systemStatusBar()
-        
-        let item = bar.statusItemWithLength(26)
-        item.image = NSImage(named: "StatusIcon")!
-        item.alternateImage = NSImage(named: "StatusIconWhite")!
-        item.menu = menu
-        statusItem = item
+        statusItemView = StatusItemView()
     }
 
 }
