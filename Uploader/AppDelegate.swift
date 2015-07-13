@@ -17,8 +17,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let bar = NSStatusBar.systemStatusBar()
         
-        let item = bar.statusItemWithLength(NSVariableStatusItemLength)
-        item.title = "Uploader"
+        let item = bar.statusItemWithLength(26)
+        item.image = NSImage(named: "StatusIcon")!
+        item.alternateImage = NSImage(named: "StatusIconWhite")!
         item.menu = menu
         statusItem = item
     }
