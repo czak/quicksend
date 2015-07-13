@@ -10,18 +10,18 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-
+    @IBOutlet weak var menu: NSMenu!
+    
+    var statusItem: NSStatusItem!
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        let bar = NSStatusBar.systemStatusBar()
+        
+        let item = bar.statusItemWithLength(NSVariableStatusItemLength)
+        item.title = "Uploader"
+        item.menu = menu
+        statusItem = item
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
-    }
-
 
 }
 
