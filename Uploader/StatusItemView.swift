@@ -21,6 +21,12 @@ class StatusItemView: NSView, NSMenuDelegate {
         }
     }
     
+    var highlightForDragging: Bool = false {
+        didSet {
+            needsDisplay = true
+        }
+    }
+    
     init() {
         // Instantiate the NSStatusItem
         let bar = NSStatusBar.systemStatusBar()
@@ -31,6 +37,8 @@ class StatusItemView: NSView, NSMenuDelegate {
         statusItem.view = self
 
         setupMenu()
+        
+        registerForDraggedTypes([NSURLPboardType])
     }
 
     required init?(coder: NSCoder) {
@@ -41,6 +49,36 @@ class StatusItemView: NSView, NSMenuDelegate {
         menu = NSMenu()
         menu!.delegate = self
         menu!.addItemWithTitle("Quit", action: "terminate:", keyEquivalent: "")
+    }
+    
+    // MARK: - NSDraggingDestination
+    
+    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+        if sender.draggingSource() === self {
+            return .None
+        }
+        highlightForDragging = true
+        return sender.draggingSourceOperationMask()
+    }
+
+    override func draggingExited(sender: NSDraggingInfo?) {
+        highlightForDragging = false
+    }
+    
+    override func prepareForDragOperation(sender: NSDraggingInfo) -> Bool {
+        return true
+    }
+    
+    override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+        let pasteboard = sender.draggingPasteboard()
+        let url = NSURL(fromPasteboard: pasteboard)!
+        debugPrint(url.path!)
+        
+        return true
+    }
+    
+    override func concludeDragOperation(sender: NSDraggingInfo?) {
+        highlightForDragging = false
     }
     
     // MARK: - NSMenuDelegate
@@ -62,7 +100,13 @@ class StatusItemView: NSView, NSMenuDelegate {
     // MARK: - Drawing
 
     override func drawRect(dirtyRect: NSRect) {
-        statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
+        if highlightForDragging {
+            NSColor.redColor().set()
+            NSBezierPath(rect: bounds).fill()
+        }
+        else {
+            statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
+        }
         
         let image = highlighted ? StatusItemImageHighlighted : StatusItemImageNormal
         
