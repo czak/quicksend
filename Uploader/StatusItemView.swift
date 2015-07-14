@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Alamofire
 
 private let StatusItemWidth: CGFloat = 26
 private let StatusItemImageNormal = NSImage(named: "StatusIcon")!
@@ -70,15 +71,30 @@ class StatusItemView: NSView, NSMenuDelegate {
     }
     
     override func performDragOperation(sender: NSDraggingInfo) -> Bool {
-        // Read URL from the dragging pasteboard
+        // Read file URL from the dragging pasteboard
         let pasteboard = sender.draggingPasteboard()
-        let url = NSURL(fromPasteboard: pasteboard)!
-        debugPrint(url.path!)
+        let fileURL = NSURL(fromPasteboard: pasteboard)!
+
+        // Upload to imgur
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.imgur.com/3/image")!)
+        request.HTTPMethod = "POST"
+        request.setValue("Client-ID 0123456789", forHTTPHeaderField: "Authorization")
         
-        // Write the path to the clipboard as a String
-        let clipboard = NSPasteboard.generalPasteboard()
-        clipboard.clearContents()
-        clipboard.writeObjects([url.path!])
+        Alamofire.upload(request, fileURL)
+            .responseJSON { (request, response, JSON, error) in
+                if let dict = JSON as? NSDictionary, data = dict["data"] as? NSDictionary {
+                    if let link = data["link"] as? String {
+                        let clipboard = NSPasteboard.generalPasteboard()
+                        clipboard.clearContents()
+                        clipboard.writeObjects([link])
+                        
+                        println("Finished uploading: \(link)")
+                    }
+                    else {
+                        println("No link received: \(dict)")
+                    }
+                }
+            }
         
         return true
     }
