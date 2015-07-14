@@ -70,9 +70,15 @@ class StatusItemView: NSView, NSMenuDelegate {
     }
     
     override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+        // Read URL from the dragging pasteboard
         let pasteboard = sender.draggingPasteboard()
         let url = NSURL(fromPasteboard: pasteboard)!
         debugPrint(url.path!)
+        
+        // Write the path to the clipboard as a String
+        let clipboard = NSPasteboard.generalPasteboard()
+        clipboard.clearContents()
+        clipboard.writeObjects([url.path!])
         
         return true
     }
