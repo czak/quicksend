@@ -75,26 +75,32 @@ class StatusItemView: NSView, NSMenuDelegate {
         let pasteboard = sender.draggingPasteboard()
         let fileURL = NSURL(fromPasteboard: pasteboard)!
 
-        // Upload to imgur
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.imgur.com/3/image")!)
-        request.HTTPMethod = "POST"
-        request.setValue("Client-ID 0123456789", forHTTPHeaderField: "Authorization")
-        
-        Alamofire.upload(request, fileURL)
-            .responseJSON { (request, response, JSON, error) in
-                if let dict = JSON as? NSDictionary, data = dict["data"] as? NSDictionary {
-                    if let link = data["link"] as? String {
-                        let clipboard = NSPasteboard.generalPasteboard()
-                        clipboard.clearContents()
-                        clipboard.writeObjects([link])
-                        
-                        println("Finished uploading: \(link)")
+        // Upload to server
+        Alamofire.upload(
+            .POST,
+            URLString: "http://localhost:8080/upload/",
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { request, response, JSON, error in
+                        if let dict = JSON as? NSDictionary, link = dict["link"] as? String {
+                            let clipboard = NSPasteboard.generalPasteboard()
+                            clipboard.clearContents()
+                            clipboard.writeObjects([link])
+                            println("Successfully copied \(link)")
+                        }
+                        else {
+                            println("No link in \(JSON)")
+                        }
                     }
-                    else {
-                        println("No link received: \(dict)")
-                    }
+                case .Failure(let encodingError):
+                    println(encodingError)
                 }
             }
+        )
         
         return true
     }
