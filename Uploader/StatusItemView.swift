@@ -27,12 +27,6 @@ class StatusItemView: NSView, NSMenuDelegate {
         }
     }
     
-    var highlightForDragging: Bool = false {
-        didSet {
-            needsDisplay = true
-        }
-    }
-    
     init() {
         // Instantiate the NSStatusItem
         let bar = NSStatusBar.systemStatusBar()
@@ -63,12 +57,12 @@ class StatusItemView: NSView, NSMenuDelegate {
         if sender.draggingSource() === self {
             return .None
         }
-        highlightForDragging = true
+        highlighted = true
         return sender.draggingSourceOperationMask()
     }
 
     override func draggingExited(sender: NSDraggingInfo?) {
-        highlightForDragging = false
+        highlighted = false
     }
     
     override func prepareForDragOperation(sender: NSDraggingInfo) -> Bool {
@@ -87,7 +81,7 @@ class StatusItemView: NSView, NSMenuDelegate {
     }
     
     override func concludeDragOperation(sender: NSDraggingInfo?) {
-        highlightForDragging = false
+        highlighted = false
     }
     
     // MARK: - NSMenuDelegate
@@ -109,14 +103,8 @@ class StatusItemView: NSView, NSMenuDelegate {
     // MARK: - Drawing
 
     override func drawRect(dirtyRect: NSRect) {
-        if highlightForDragging {
-            NSColor.redColor().set()
-            NSBezierPath(rect: bounds).fill()
-        }
-        else {
-            statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
-        }
-        
+        statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
+
         let image = highlighted ? StatusItemImageHighlighted : StatusItemImageNormal
         
         // Center the image within view
