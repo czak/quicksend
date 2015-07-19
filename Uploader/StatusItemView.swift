@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Alamofire
 
 private let StatusItemWidth: CGFloat = 26
 private let StatusItemImageNormal = NSImage(named: "StatusIcon")!
