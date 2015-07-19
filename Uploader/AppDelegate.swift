@@ -8,19 +8,30 @@
 
 import Cocoa
 
+private let serverURLKey = "serverURL"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     var statusItemView: StatusItemView!
+    var uploader: Uploader!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItemView = StatusItemView()
         statusItemView.delegate = self
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.registerDefaults([
+            serverURLKey: "http://localhost:8080/upload/"
+        ])
+        
+        let url = userDefaults.stringForKey(serverURLKey)!
+        uploader = Uploader(serverURL: url)
     }
     
     // MARK: - StatusItemViewDelegate
     
     func statusItemView(view: StatusItemView, didReceiveFileURL fileURL: NSURL) {
-        Uploader.uploadFile(fileURL, completionHandler: { result in
+        uploader.uploadFile(fileURL, completionHandler: { result in
             switch result {
             case .Success(let link):
                 let clipboard = NSPasteboard.generalPasteboard()

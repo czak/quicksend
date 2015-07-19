@@ -15,10 +15,16 @@ class Uploader {
         case Failure(String)
     }
     
-    class func uploadFile(fileURL: NSURL, completionHandler: (UploadStatus) -> Void) {
+    let serverURL: String
+    
+    init(serverURL: String) {
+        self.serverURL = serverURL
+    }
+    
+    func uploadFile(fileURL: NSURL, completionHandler: (UploadStatus) -> Void) {
         Alamofire.upload(
             .POST,
-            URLString: "http://localhost:8080/upload/",
+            URLString: serverURL,
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
             },
