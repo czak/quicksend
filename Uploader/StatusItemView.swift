@@ -12,8 +12,14 @@ private let StatusItemWidth: CGFloat = 26
 private let StatusItemImageNormal = NSImage(named: "StatusIcon")!
 private let StatusItemImageHighlighted = NSImage(named: "StatusIconWhite")!
 
+protocol StatusItemViewDelegate {
+    func statusItemView(view: StatusItemView, didReceiveFileURL fileURL: NSURL)
+}
+
 class StatusItemView: NSView, NSMenuDelegate {
     let statusItem: NSStatusItem
+    
+    var delegate: StatusItemViewDelegate?
 
     var highlighted: Bool = false {
         didSet {
@@ -73,18 +79,9 @@ class StatusItemView: NSView, NSMenuDelegate {
         // Read file URL from the dragging pasteboard
         let pasteboard = sender.draggingPasteboard()
         let fileURL = NSURL(fromPasteboard: pasteboard)!
-        
-        Uploader.uploadFile(fileURL, completionHandler: { result in
-            switch result {
-            case .Success(let link):
-                let clipboard = NSPasteboard.generalPasteboard()
-                clipboard.clearContents()
-                clipboard.writeObjects([link])
-                println("Successfully copied \(link)")
-            case .Failure(let message):
-                println(message)
-            }
-        })
+
+        // Notify delegate about the received drag
+        delegate?.statusItemView(self, didReceiveFileURL: fileURL)
         
         return true
     }
