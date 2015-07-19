@@ -49,7 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
                 let clipboard = NSPasteboard.generalPasteboard()
                 clipboard.clearContents()
                 clipboard.writeObjects([link])
-                println("Successfully copied \(link)")
+                
+                // Notify the user
+                let notification = NSUserNotification()
+                notification.title = "Successfully uploaded"
+                notification.subtitle = link
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                
             case .Failure(let message):
                 println(message)
             }
