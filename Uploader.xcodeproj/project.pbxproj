@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BD241B5BB01E00691568 /* Uploader.swift */; };
 		24D815B01B55B65400ADF838 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; };
 		24D815B11B55B65400ADF838 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D924BE1B5452C6002F9D81 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		24C4BD241B5BB01E00691568 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		24D815AF1B55B65400ADF838 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		24D924BB1B5452C6002F9D81 /* Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D924BE1B5452C6002F9D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				24D924BE1B5452C6002F9D81 /* AppDelegate.swift */,
 				24D924D81B546FE7002F9D81 /* StatusItemView.swift */,
+				24C4BD241B5BB01E00691568 /* Uploader.swift */,
 				24D924C01B5452C6002F9D81 /* Assets.xcassets */,
 				24D924C21B5452C6002F9D81 /* MainMenu.xib */,
 				24D924C51B5452C6002F9D81 /* Info.plist */,
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */,
 				24D924D91B546FE7002F9D81 /* StatusItemView.swift in Sources */,
 				24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */,
 			);

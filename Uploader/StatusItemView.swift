@@ -74,33 +74,18 @@ class StatusItemView: NSView, NSMenuDelegate {
         // Read file URL from the dragging pasteboard
         let pasteboard = sender.draggingPasteboard()
         let fileURL = NSURL(fromPasteboard: pasteboard)!
-
-        // Upload to server
-        Alamofire.upload(
-            .POST,
-            URLString: "http://localhost:8080/upload/",
-            multipartFormData: { multipartFormData in
-                multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
-            },
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON { request, response, JSON, error in
-                        if let dict = JSON as? NSDictionary, link = dict["link"] as? String {
-                            let clipboard = NSPasteboard.generalPasteboard()
-                            clipboard.clearContents()
-                            clipboard.writeObjects([link])
-                            println("Successfully copied \(link)")
-                        }
-                        else {
-                            println("No link in \(JSON)")
-                        }
-                    }
-                case .Failure(let encodingError):
-                    println(encodingError)
-                }
+        
+        Uploader.uploadFile(fileURL, completionHandler: { result in
+            switch result {
+            case .Success(let link):
+                let clipboard = NSPasteboard.generalPasteboard()
+                clipboard.clearContents()
+                clipboard.writeObjects([link])
+                println("Successfully copied \(link)")
+            case .Failure(let message):
+                println(message)
             }
-        )
+        })
         
         return true
     }
