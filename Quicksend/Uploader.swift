@@ -1,6 +1,6 @@
 //
 //  Uploader.swift
-//  Uploader
+//  Quicksend
 //
 //  Created by Łukasz Adamczak on 19.07.2015.
 //  Copyright (c) 2015 Łukasz Adamczak. All rights reserved.

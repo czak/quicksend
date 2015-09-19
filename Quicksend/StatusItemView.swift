@@ -1,6 +1,6 @@
 //
 //  StatusItemView.swift
-//  Uploader
+//  Quicksend
 //
 //  Created by Łukasz Adamczak on 14.07.2015.
 //  Copyright © 2015 Łukasz Adamczak. All rights reserved.

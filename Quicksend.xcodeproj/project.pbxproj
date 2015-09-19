@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		24C4BD241B5BB01E00691568 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		24D815AF1B55B65400ADF838 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
-		24D924BB1B5452C6002F9D81 /* Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24D924BB1B5452C6002F9D81 /* Quicksend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quicksend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D924BE1B5452C6002F9D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D924C01B5452C6002F9D81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24D924C31B5452C6002F9D81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		24D924B21B5452C6002F9D81 = {
 			isa = PBXGroup;
 			children = (
-				24D924BD1B5452C6002F9D81 /* Uploader */,
+				24D924BD1B5452C6002F9D81 /* Quicksend */,
 				24D815B31B55B66900ADF838 /* Frameworks */,
 				24D924BC1B5452C6002F9D81 /* Products */,
 			);
@@ -77,12 +77,12 @@
 		24D924BC1B5452C6002F9D81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				24D924BB1B5452C6002F9D81 /* Uploader.app */,
+				24D924BB1B5452C6002F9D81 /* Quicksend.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		24D924BD1B5452C6002F9D81 /* Uploader */ = {
+		24D924BD1B5452C6002F9D81 /* Quicksend */ = {
 			isa = PBXGroup;
 			children = (
 				24D924BE1B5452C6002F9D81 /* AppDelegate.swift */,
@@ -93,7 +93,7 @@
 				24D924C51B5452C6002F9D81 /* Info.plist */,
 				24D924CB1B5465E9002F9D81 /* Resources */,
 			);
-			path = Uploader;
+			path = Quicksend;
 			sourceTree = "<group>";
 		};
 		24D924CB1B5465E9002F9D81 /* Resources */ = {
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		24D924BA1B5452C6002F9D81 /* Uploader */ = {
+		24D924BA1B5452C6002F9D81 /* Quicksend */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24D924C81B5452C6002F9D81 /* Build configuration list for PBXNativeTarget "Uploader" */;
+			buildConfigurationList = 24D924C81B5452C6002F9D81 /* Build configuration list for PBXNativeTarget "Quicksend" */;
 			buildPhases = (
 				24D924B71B5452C6002F9D81 /* Sources */,
 				24D924B81B5452C6002F9D81 /* Frameworks */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = Uploader;
+			name = Quicksend;
 			productName = Uploader;
-			productReference = 24D924BB1B5452C6002F9D81 /* Uploader.app */;
+			productReference = 24D924BB1B5452C6002F9D81 /* Quicksend.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 24D924B61B5452C6002F9D81 /* Build configuration list for PBXProject "Uploader" */;
+			buildConfigurationList = 24D924B61B5452C6002F9D81 /* Build configuration list for PBXProject "Quicksend" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -153,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				24D924BA1B5452C6002F9D81 /* Uploader */,
+				24D924BA1B5452C6002F9D81 /* Quicksend */,
 			);
 		};
 /* End PBXProject section */
@@ -286,10 +286,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Uploader/Info.plist;
+				INFOPLIST_FILE = Quicksend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.Uploader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.quicksend;
+				PRODUCT_NAME = Quicksend;
 			};
 			name = Debug;
 		};
@@ -302,17 +302,17 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Uploader/Info.plist;
+				INFOPLIST_FILE = Quicksend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.Uploader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.quicksend;
+				PRODUCT_NAME = Quicksend;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		24D924B61B5452C6002F9D81 /* Build configuration list for PBXProject "Uploader" */ = {
+		24D924B61B5452C6002F9D81 /* Build configuration list for PBXProject "Quicksend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24D924C61B5452C6002F9D81 /* Debug */,
@@ -321,7 +321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24D924C81B5452C6002F9D81 /* Build configuration list for PBXNativeTarget "Uploader" */ = {
+		24D924C81B5452C6002F9D81 /* Build configuration list for PBXNativeTarget "Quicksend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				24D924C91B5452C6002F9D81 /* Debug */,

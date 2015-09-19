@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Uploader
+//  Quicksend
 //
 //  Created by Łukasz Adamczak on 13.07.2015.
 //  Copyright © 2015 Łukasz Adamczak. All rights reserved.
