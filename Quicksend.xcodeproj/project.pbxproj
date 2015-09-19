@@ -86,13 +86,13 @@
 		24D924BD1B5452C6002F9D81 /* Quicksend */ = {
 			isa = PBXGroup;
 			children = (
-				2462D9671BADCB5F0097A40F /* Quicksend.entitlements */,
 				24D924BE1B5452C6002F9D81 /* AppDelegate.swift */,
 				24D924D81B546FE7002F9D81 /* StatusItemView.swift */,
 				24C4BD241B5BB01E00691568 /* Uploader.swift */,
 				24D924C01B5452C6002F9D81 /* Assets.xcassets */,
 				24D924C21B5452C6002F9D81 /* MainMenu.xib */,
 				24D924C51B5452C6002F9D81 /* Info.plist */,
+				2462D9671BADCB5F0097A40F /* Quicksend.entitlements */,
 				24D924CB1B5465E9002F9D81 /* Resources */,
 			);
 			path = Quicksend;
