@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                 
             case .Failure(let message):
-                println(message)
+                print(message)
             }
         })
     }
@@ -71,19 +71,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     // MARK: - NSMetadataQuery notification
     
     func queryUpdated(notification: NSNotification) {
-        println("Query updated: \(query.resultCount) screenshots found")
+        print("Query updated: \(query.resultCount) screenshots found")
         
         if let item = query.resultAtIndex(0) as? NSMetadataItem {
-            if let path = item.valueForAttribute("kMDItemPath") as? String,
-                let fileURL = NSURL(fileURLWithPath: path) {
+            if let path = item.valueForAttribute("kMDItemPath") as? String {
+                let fileURL = NSURL(fileURLWithPath: path)
                 uploadFile(fileURL)
             }
             else {
-                println("Unable to parse URL from \(item.attributes)")
+                print("Unable to parse URL from \(item.attributes)")
             }
         }
         else {
-            println("No item in query")
+            print("No item in query")
         }
     }
     

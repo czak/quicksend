@@ -24,21 +24,21 @@ class Uploader {
     func uploadFile(fileURL: NSURL, completionHandler: (UploadStatus) -> Void) {
         Alamofire.upload(
             .POST,
-            URLString: serverURL,
+            serverURL,
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
             },
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .Success(let upload, _, _):
-                    upload.responseJSON { request, response, JSON, error in
+                    upload.responseJSON { request, response, result in
                         var uploadStatus: UploadStatus?
                         
-                        if let dict = JSON as? NSDictionary, link = dict["link"] as? String {
+                        if let dict = result.value as? NSDictionary, link = dict["link"] as? String {
                             uploadStatus = .Success(link)
                         }
                         else {
-                            uploadStatus = .Failure("No link in \(JSON)")
+                            uploadStatus = .Failure("No link in \(result)")
                         }
                         
                         completionHandler(uploadStatus!)
