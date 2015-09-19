@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D9681BADFC750097A40F /* quicksend-test.txt */; settings = {ASSET_TAGS = (); }; };
 		24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BD241B5BB01E00691568 /* Uploader.swift */; };
 		24D815B01B55B65400ADF838 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; };
 		24D815B11B55B65400ADF838 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		2462D9671BADCB5F0097A40F /* Quicksend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Quicksend.entitlements; sourceTree = "<group>"; };
+		2462D9681BADFC750097A40F /* quicksend-test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "quicksend-test.txt"; sourceTree = "<group>"; };
 		24C4BD241B5BB01E00691568 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		24D815AF1B55B65400ADF838 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		24D924BB1B5452C6002F9D81 /* Quicksend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quicksend.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 		24D924CB1B5465E9002F9D81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2462D9681BADFC750097A40F /* quicksend-test.txt */,
 				24D924D21B5467E9002F9D81 /* StatusIcon.pdf */,
 				24D924D31B5467E9002F9D81 /* StatusIconWhite.pdf */,
 			);
@@ -174,6 +177,7 @@
 				24D924C11B5452C6002F9D81 /* Assets.xcassets in Resources */,
 				24D924D51B5467E9002F9D81 /* StatusIconWhite.pdf in Resources */,
 				24D924D41B5467E9002F9D81 /* StatusIcon.pdf in Resources */,
+				2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */,
 				24D924C41B5452C6002F9D81 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
