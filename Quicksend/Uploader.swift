@@ -77,6 +77,8 @@ class Uploader {
         
         print(signature)
         
+        // 5. Wykonanie requestu
+        
         let headers = [
             "Authorization": "AWS4-HMAC-SHA256 Credential=\(AWSAccessKeyID)/\(date.iso8601datestamp())/\(AWSRegion)/s3/aws4_request, SignedHeaders=content-type;host;x-amz-acl;x-amz-content-sha256;x-amz-date, Signature=\(signature)",
             "Content-Type": mimetype,
@@ -87,37 +89,23 @@ class Uploader {
         
         let request = Alamofire.upload(.PUT, "https://\(AWSBucketName).s3.amazonaws.com/\(fileName)", headers: headers, file: fileURL)
         request.response { request, response, data, error in
-            print(request)
-            print(response)
-            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-            print(error)
+            var status: UploadStatus?
+
+            debugPrint(response)
+            
+            if let response = response {
+                if response.statusCode == 200 {
+                    status = .Success(response.URL!.absoluteString)
+                }
+                else {
+                    status = .Failure("Failed with status \(response.statusCode)")
+                }
+            }
+            else {
+                status = .Failure("No response, error: \(error)")
+            }
+            
+            completionHandler(status!)
         }
-        
-//        Alamofire.upload(
-//            .POST,
-//            serverURL,
-//            multipartFormData: { multipartFormData in
-//                multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
-//            },
-//            encodingCompletion: { encodingResult in
-//                switch encodingResult {
-//                case .Success(let upload, _, _):
-//                    upload.responseJSON { request, response, result in
-//                        var uploadStatus: UploadStatus?
-//                        
-//                        if let dict = result.value as? NSDictionary, link = dict["link"] as? String {
-//                            uploadStatus = .Success(link)
-//                        }
-//                        else {
-//                            uploadStatus = .Failure("No link in \(result)")
-//                        }
-//                        
-//                        completionHandler(uploadStatus!)
-//                    }
-//                case .Failure(let encodingError):
-//                    completionHandler(.Failure("Encoding error: \(encodingError)"))
-//                }
-//            }
-//        )
     }
 }
