@@ -14,7 +14,6 @@ private let serverURLKey = "serverURL"
 class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     var statusItemView: StatusItemView!
     var uploader: Uploader!
-    let query = NSMetadataQuery()
     
     lazy var preferencesWindowController: PreferencesWindowController = {
         return PreferencesWindowController()
@@ -32,18 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
 
         let url = userDefaults.stringForKey(serverURLKey)!
         uploader = Uploader(serverURL: url)
-        
-        // Metadata query for new screenshots
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: "queryUpdated:", name: NSMetadataQueryDidUpdateNotification, object: query)
-        
-        query.predicate = NSPredicate(format: "kMDItemIsScreenCapture = 1")
-        query.sortDescriptors = [NSSortDescriptor(key: "kMDItemFSCreationDate", ascending: false)]
-        query.startQuery()
-    }
-    
-    func applicationWillTerminate(aNotification: NSNotification) {
-        query.stopQuery()
     }
     
     func uploadFile(fileURL: NSURL) {
@@ -78,25 +65,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     func statusItemView(view: StatusItemView, didReceiveFileURL fileURL: NSURL) {
         uploadFile(fileURL)
     }
-
-    // MARK: - NSMetadataQuery notification
-    
-    func queryUpdated(notification: NSNotification) {
-        print("Query updated: \(query.resultCount) screenshots found")
-        
-        if let item = query.resultAtIndex(0) as? NSMetadataItem {
-            if let path = item.valueForAttribute("kMDItemPath") as? String {
-                let fileURL = NSURL(fileURLWithPath: path)
-                uploadFile(fileURL)
-            }
-            else {
-                print("Unable to parse URL from \(item.attributes)")
-            }
-        }
-        else {
-            print("No item in query")
-        }
-    }
-    
 }
 
