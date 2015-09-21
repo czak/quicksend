@@ -20,12 +20,6 @@ class Uploader {
         case Failure(String)
     }
     
-    let serverURL: String
-    
-    init(serverURL: String) {
-        self.serverURL = serverURL
-    }
-    
     func mimetypeForFile(url: NSURL) -> String {
         let ext = url.pathExtension
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext!, nil)!.takeRetainedValue()

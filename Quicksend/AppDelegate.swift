@@ -13,7 +13,7 @@ private let serverURLKey = "serverURL"
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     var statusItemView: StatusItemView!
-    var uploader: Uploader!
+    var uploader = Uploader()
     
     lazy var preferencesWindowController: PreferencesWindowController = {
         return PreferencesWindowController()
@@ -22,15 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItemView = StatusItemView()
         statusItemView.delegate = self
-        
-        // Register user defaults
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.registerDefaults([
-            serverURLKey: "http://localhost:8080/upload/"
-        ])
-
-        let url = userDefaults.stringForKey(serverURLKey)!
-        uploader = Uploader(serverURL: url)
     }
     
     func uploadFile(fileURL: NSURL) {
