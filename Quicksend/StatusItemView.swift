@@ -59,6 +59,19 @@ class StatusItemView: NSView, NSMenuDelegate {
         if sender.draggingSource() === self {
             return .None
         }
+        
+        let pasteboard = sender.draggingPasteboard()
+        
+        // Nie akceptuję kilku plików na raz
+        if pasteboard.pasteboardItems?.count > 1 {
+            return .None
+        }
+
+        // Nie akceptuję katalogów
+        if let fileURL = NSURL(fromPasteboard: pasteboard) where CFURLHasDirectoryPath(fileURL) {
+            return .None
+        }
+        
         highlighted = true
         return sender.draggingSourceOperationMask()
     }
