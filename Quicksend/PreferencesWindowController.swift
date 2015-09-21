@@ -8,11 +8,6 @@
 
 import Cocoa
 
-private let awsAccessKeyIdKey = "awsAccessKeyId"
-private let awsSecretAccessKeyKey = "awsSecretAccessKey"
-private let awsBucketNameKey = "awsBucketName"
-private let awsRegionKey = "awsRegion"
-
 class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     var regions = [
@@ -29,13 +24,6 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     
     override var windowNibName: String {
         return "PreferencesWindowController"
-    }
-    
-    override func windowDidLoad() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.registerDefaults([
-            awsRegionKey: "us-east-1"
-        ])
     }
     
     func windowWillClose(notification: NSNotification) {

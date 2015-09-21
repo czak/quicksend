@@ -22,6 +22,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItemView = StatusItemView()
         statusItemView.delegate = self
+        
+        // Domyślny region dla preferencesów
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.registerDefaults([
+            "awsRegion": "us-east-1"
+        ])
     }
     
     func uploadFile(fileURL: NSURL) {
