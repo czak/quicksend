@@ -39,6 +39,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                 
             case .Failure(let message):
+                let alert = NSAlert()
+                alert.messageText = "Unable to upload file"
+                alert.informativeText = message
+                alert.addButtonWithTitle("OK")
+                alert.runModal()
+                
                 print(message)
             }
         })

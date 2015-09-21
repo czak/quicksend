@@ -47,7 +47,7 @@ class Uploader {
     
     func uploadFile(fileURL: NSURL, completionHandler: (UploadStatus) -> Void) {
         guard (awsAccessKeyId != nil && awsSecretAccessKey != nil && awsBucketName != nil && awsRegion != nil) else {
-            completionHandler(.Failure("Not configured correctly!"))
+            completionHandler(.Failure("Your AWS account has not been configured. Open Quicksend preferences to set up your connection details."))
             return
         }
         
