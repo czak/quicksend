@@ -35,8 +35,12 @@ class Uploader {
     func mimetypeForFile(url: NSURL) -> String {
         let ext = url.pathExtension
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext!, nil)!.takeRetainedValue()
-        let mimeType = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)!.takeRetainedValue()
-        return mimeType as String
+        if let mimeType = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
+            return mimeType as String
+        }
+        else {
+            return "binary/octet-stream"
+        }
     }
     
     func sizeForFile(url: NSURL) -> Int {
