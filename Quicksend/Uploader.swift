@@ -52,7 +52,7 @@ class Uploader {
         }
         
         // 1. Canonical request
-        let fileName = fileURL.lastPathComponent!
+        let fileName = fileURL.lastPathComponent!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
         let fileData = NSData(contentsOfURL: fileURL)!
         let fileHash = sha256_hexdigest(fileData)
         let date = NSDate()
