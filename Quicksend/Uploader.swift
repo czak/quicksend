@@ -106,18 +106,40 @@ class Uploader {
         request.response { request, response, data, error in
             var status: UploadStatus?
 
-            debugPrint(response)
-            
             if let response = response {
-                if response.statusCode == 200 {
+                switch response.statusCode {
+                case 200:
                     status = .Success(response.URL!.absoluteString)
-                }
-                else {
-                    status = .Failure("Failed with status \(response.statusCode)")
+                case 403:
+                    var message: String = "AWS Authentication failed. Please double-check your access keys and bucket data."
+                    
+                    if let doc = try? NSXMLDocument(data: data!, options: 0) {
+                        if let node = try? doc.nodesForXPath("//Message") {
+                            if let awsMessage = node.first?.stringValue {
+                                message += "\n\nError message received: \"\(awsMessage)\""
+                            }
+                        }
+                    }
+                    
+                    status = .Failure(message)
+                    
+                default:
+                    var message: String = "Failed with status \(response.statusCode)"
+                    
+                    // FIXME: Brzydka duplikacja tego parsowania errora
+                    if let doc = try? NSXMLDocument(data: data!, options: 0) {
+                        if let node = try? doc.nodesForXPath("//Message") {
+                            if let awsMessage = node.first?.stringValue {
+                                message += "\n\nError message received: \"\(awsMessage)\""
+                            }
+                        }
+                    }
+                    
+                    status = .Failure(message)
                 }
             }
             else {
-                status = .Failure("No response, error: \(error)")
+                status = .Failure("Unable to reach the S3 server. Please verify your internet connection.")
             }
             
             completionHandler(status!)
