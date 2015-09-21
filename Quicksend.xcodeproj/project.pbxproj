@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D9681BADFC750097A40F /* quicksend-test.txt */; settings = {ASSET_TAGS = (); }; };
 		24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BD241B5BB01E00691568 /* Uploader.swift */; };
+		24D0044C1BB0041B000E45DD /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0044B1BB0041B000E45DD /* SHA256.swift */; settings = {ASSET_TAGS = (); }; };
 		24D815B01B55B65400ADF838 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; };
 		24D815B11B55B65400ADF838 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D924BE1B5452C6002F9D81 /* AppDelegate.swift */; };
@@ -37,6 +38,8 @@
 		2462D9671BADCB5F0097A40F /* Quicksend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Quicksend.entitlements; sourceTree = "<group>"; };
 		2462D9681BADFC750097A40F /* quicksend-test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "quicksend-test.txt"; sourceTree = "<group>"; };
 		24C4BD241B5BB01E00691568 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
+		24D0044B1BB0041B000E45DD /* SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		24D0044E1BB004D0000E45DD /* Quicksend-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quicksend-Bridging-Header.h"; sourceTree = "<group>"; };
 		24D815AF1B55B65400ADF838 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		24D924BB1B5452C6002F9D81 /* Quicksend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quicksend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D924BE1B5452C6002F9D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,11 +94,13 @@
 				24D924BE1B5452C6002F9D81 /* AppDelegate.swift */,
 				24D924D81B546FE7002F9D81 /* StatusItemView.swift */,
 				24C4BD241B5BB01E00691568 /* Uploader.swift */,
+				24D0044B1BB0041B000E45DD /* SHA256.swift */,
 				24D924C01B5452C6002F9D81 /* Assets.xcassets */,
 				24D924C21B5452C6002F9D81 /* MainMenu.xib */,
 				24D924C51B5452C6002F9D81 /* Info.plist */,
 				2462D9671BADCB5F0097A40F /* Quicksend.entitlements */,
 				24D924CB1B5465E9002F9D81 /* Resources */,
+				24D0044E1BB004D0000E45DD /* Quicksend-Bridging-Header.h */,
 			);
 			path = Quicksend;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 		24D924B31B5452C6002F9D81 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Łukasz Adamczak";
 				TargetAttributes = {
@@ -189,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D0044C1BB0041B000E45DD /* SHA256.swift in Sources */,
 				24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */,
 				24D924D91B546FE7002F9D81 /* StatusItemView.swift in Sources */,
 				24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */,
@@ -293,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Quicksend/Quicksend.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -304,6 +312,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.quicksend;
 				PRODUCT_NAME = Quicksend;
+				SWIFT_OBJC_BRIDGING_HEADER = "Quicksend/Quicksend-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -311,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Quicksend/Quicksend.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -322,6 +333,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czak.quicksend;
 				PRODUCT_NAME = Quicksend;
+				SWIFT_OBJC_BRIDGING_HEADER = "Quicksend/Quicksend-Bridging-Header.h";
 			};
 			name = Release;
 		};
