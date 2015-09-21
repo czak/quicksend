@@ -48,6 +48,8 @@ class StatusItemView: NSView, NSMenuDelegate {
     private func setupMenu() {
         menu = NSMenu()
         menu!.delegate = self
+        menu!.addItemWithTitle("Preferences...", action: "showPreferences:", keyEquivalent: "")
+        menu!.addItem(NSMenuItem.separatorItem())
         menu!.addItemWithTitle("Quit", action: "terminate:", keyEquivalent: "")
     }
     

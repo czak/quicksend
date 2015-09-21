@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D9681BADFC750097A40F /* quicksend-test.txt */; settings = {ASSET_TAGS = (); }; };
+		24BF3F3E1BB0409100B63E89 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF3F3C1BB0409100B63E89 /* PreferencesWindowController.swift */; settings = {ASSET_TAGS = (); }; };
+		24BF3F3F1BB0409100B63E89 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BF3F3D1BB0409100B63E89 /* PreferencesWindowController.xib */; settings = {ASSET_TAGS = (); }; };
 		24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BD241B5BB01E00691568 /* Uploader.swift */; };
 		24D0044C1BB0041B000E45DD /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0044B1BB0041B000E45DD /* SHA256.swift */; settings = {ASSET_TAGS = (); }; };
 		24D004521BB008E8000E45DD /* NSDate+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D004511BB008E8000E45DD /* NSDate+ISO8601.swift */; settings = {ASSET_TAGS = (); }; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		2462D9671BADCB5F0097A40F /* Quicksend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Quicksend.entitlements; sourceTree = "<group>"; };
 		2462D9681BADFC750097A40F /* quicksend-test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "quicksend-test.txt"; sourceTree = "<group>"; };
+		24BF3F3C1BB0409100B63E89 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		24BF3F3D1BB0409100B63E89 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		24C4BD241B5BB01E00691568 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		24D0044B1BB0041B000E45DD /* SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
 		24D0044E1BB004D0000E45DD /* Quicksend-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quicksend-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				2462D9671BADCB5F0097A40F /* Quicksend.entitlements */,
 				24D924CB1B5465E9002F9D81 /* Resources */,
 				24D0044E1BB004D0000E45DD /* Quicksend-Bridging-Header.h */,
+				24BF3F3C1BB0409100B63E89 /* PreferencesWindowController.swift */,
+				24BF3F3D1BB0409100B63E89 /* PreferencesWindowController.xib */,
 			);
 			path = Quicksend;
 			sourceTree = "<group>";
@@ -186,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BF3F3F1BB0409100B63E89 /* PreferencesWindowController.xib in Resources */,
 				24D924C11B5452C6002F9D81 /* Assets.xcassets in Resources */,
 				24D924D51B5467E9002F9D81 /* StatusIconWhite.pdf in Resources */,
 				24D924D41B5467E9002F9D81 /* StatusIcon.pdf in Resources */,
@@ -205,6 +212,7 @@
 				24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */,
 				24D924D91B546FE7002F9D81 /* StatusItemView.swift in Sources */,
 				24D004541BB00B35000E45DD /* AWS.swift in Sources */,
+				24BF3F3E1BB0409100B63E89 /* PreferencesWindowController.swift in Sources */,
 				24D004521BB008E8000E45DD /* NSDate+ISO8601.swift in Sources */,
 				24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */,
 			);

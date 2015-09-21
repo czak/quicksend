@@ -16,6 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     var uploader: Uploader!
     let query = NSMetadataQuery()
     
+    lazy var preferencesWindowController: PreferencesWindowController = {
+        return PreferencesWindowController()
+    }()
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         statusItemView = StatusItemView()
         statusItemView.delegate = self
@@ -60,6 +64,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
                 print(message)
             }
         })
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func showPreferences(sender: AnyObject?) {
+        preferencesWindowController.showWindow(self)
+        NSApp.activateIgnoringOtherApps(true)
     }
     
     // MARK: - StatusItemViewDelegate
