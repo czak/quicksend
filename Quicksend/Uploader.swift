@@ -11,7 +11,7 @@ import Alamofire
 
 class Uploader {
     enum UploadStatus {
-        case Success(String)
+        case Success(NSURL)
         case Failure(String)
     }
     
@@ -109,7 +109,7 @@ class Uploader {
             if let response = response {
                 switch response.statusCode {
                 case 200:
-                    status = .Success(response.URL!.absoluteString)
+                    status = .Success(response.URL!)
                 case 403:
                     var message: String = "AWS Authentication failed. Please double-check your access keys and bucket data."
                     

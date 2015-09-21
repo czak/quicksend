@@ -33,15 +33,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     func uploadFile(fileURL: NSURL) {
         uploader.uploadFile(fileURL, completionHandler: { result in
             switch result {
-            case .Success(let link):
+            case .Success(let url):
                 let clipboard = NSPasteboard.generalPasteboard()
                 clipboard.clearContents()
-                clipboard.writeObjects([link])
-                
+                clipboard.writeObjects([url.absoluteString])
+
                 // Notify the user
                 let notification = NSUserNotification()
-                notification.title = "Successfully uploaded"
-                notification.subtitle = link
+                notification.title = "Upload successful!"
+                notification.informativeText = url.lastPathComponent!
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                 
             case .Failure(let message):
