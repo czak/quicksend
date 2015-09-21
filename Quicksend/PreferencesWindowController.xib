@@ -50,11 +50,14 @@
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0y-b3-sUy">
                         <rect key="frame" x="163" y="166" width="250" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nuQ-n2-ASG">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nuQ-n2-ASG">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="KHZ-wT-plX" name="value" keyPath="values.awsAccessKeyId" id="EYr-DF-l9H"/>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7s-52-bMZ">
                         <rect key="frame" x="23" y="133" width="134" height="17"/>
@@ -74,11 +77,14 @@
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yab-U1-VtW">
                         <rect key="frame" x="163" y="96" width="250" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="KQU-Sn-QMH">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="KQU-Sn-QMH">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="KHZ-wT-plX" name="value" keyPath="values.awsBucketName" id="QrW-yi-haN"/>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-4M-0kW">
                         <rect key="frame" x="23" y="64" width="134" height="17"/>
@@ -90,7 +96,7 @@
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-tr-ADp" userLabel="Region dropdown">
                         <rect key="frame" x="161" y="58" width="254" height="26"/>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="8Wd-7f-iBH" id="itY-0z-5Am">
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" continuous="YES" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="8Wd-7f-iBH" id="itY-0z-5Am">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="05F-MR-Ws0">
@@ -101,6 +107,12 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <binding destination="V9t-Ug-kUj" name="content" keyPath="arrangedObjects" id="Qap-SR-wys"/>
+                            <binding destination="V9t-Ug-kUj" name="contentObjects" keyPath="arrangedObjects.key" previousBinding="Qap-SR-wys" id="Kv5-XB-uyn"/>
+                            <binding destination="V9t-Ug-kUj" name="contentValues" keyPath="arrangedObjects.title" previousBinding="Kv5-XB-uyn" id="8t0-sh-FFI"/>
+                            <binding destination="KHZ-wT-plX" name="selectedObject" keyPath="values.awsRegion" previousBinding="8t0-sh-FFI" id="IoA-mP-zjB"/>
+                        </connections>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vDy-ss-1oO">
                         <rect key="frame" x="342" y="13" width="76" height="32"/>
@@ -109,12 +121,12 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="performClose:" target="-1" id="aXP-wv-FfI"/>
+                            <action selector="performClose:" target="-1" id="4lu-c4-JvR"/>
                         </connections>
                     </button>
                     <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ewa-Fo-D5L">
                         <rect key="frame" x="163" y="131" width="249" height="22"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="b0S-Rq-ek3">
+                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="b0S-Rq-ek3">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -122,14 +134,23 @@
                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                             </allowedInputSourceLocales>
                         </secureTextFieldCell>
+                        <connections>
+                            <binding destination="KHZ-wT-plX" name="value" keyPath="values.awsSecretAccessKey" id="sHQ-xx-ufg"/>
+                        </connections>
                     </secureTextField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="222.5" y="250"/>
+            <point key="canvasLocation" x="342.5" y="379"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="KHZ-wT-plX"/>
+        <arrayController id="V9t-Ug-kUj" userLabel="Regions">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="regions" id="zfR-w4-gzK"/>
+            </connections>
+        </arrayController>
     </objects>
     <resources>
         <image name="awscube" width="16" height="16"/>
