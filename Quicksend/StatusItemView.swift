@@ -120,7 +120,9 @@ class StatusItemView: NSView, NSMenuDelegate {
     override func drawRect(dirtyRect: NSRect) {
         statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
 
-        let image = highlighted ? StatusItemImageHighlighted : StatusItemImageNormal
+        // Wykrycie trybu "dark mode" z 10.10
+        let darkMode = NSAppearance.currentAppearance().name.containsString(NSAppearanceNameVibrantDark)
+        let image = highlighted || darkMode ? StatusItemImageHighlighted : StatusItemImageNormal
         
         // Center the image within view
         let x = (bounds.width - image.size.width) / 2
