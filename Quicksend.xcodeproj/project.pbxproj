@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D9681BADFC750097A40F /* quicksend-test.txt */; settings = {ASSET_TAGS = (); }; };
-		24BF3F3E1BB0409100B63E89 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF3F3C1BB0409100B63E89 /* PreferencesWindowController.swift */; settings = {ASSET_TAGS = (); }; };
-		24BF3F3F1BB0409100B63E89 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BF3F3D1BB0409100B63E89 /* PreferencesWindowController.xib */; settings = {ASSET_TAGS = (); }; };
+		2462D9691BADFC750097A40F /* quicksend-test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2462D9681BADFC750097A40F /* quicksend-test.txt */; };
+		24BF3F3E1BB0409100B63E89 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF3F3C1BB0409100B63E89 /* PreferencesWindowController.swift */; };
+		24BF3F3F1BB0409100B63E89 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BF3F3D1BB0409100B63E89 /* PreferencesWindowController.xib */; };
 		24C4BD251B5BB01E00691568 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BD241B5BB01E00691568 /* Uploader.swift */; };
-		24D0044C1BB0041B000E45DD /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0044B1BB0041B000E45DD /* SHA256.swift */; settings = {ASSET_TAGS = (); }; };
-		24D004521BB008E8000E45DD /* NSDate+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D004511BB008E8000E45DD /* NSDate+ISO8601.swift */; settings = {ASSET_TAGS = (); }; };
-		24D004541BB00B35000E45DD /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D004531BB00B35000E45DD /* AWS.swift */; settings = {ASSET_TAGS = (); }; };
+		24D0044C1BB0041B000E45DD /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0044B1BB0041B000E45DD /* SHA256.swift */; };
+		24D004521BB008E8000E45DD /* NSDate+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D004511BB008E8000E45DD /* NSDate+ISO8601.swift */; };
+		24D004541BB00B35000E45DD /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D004531BB00B35000E45DD /* AWS.swift */; };
 		24D815B01B55B65400ADF838 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; };
 		24D815B11B55B65400ADF838 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24D815AF1B55B65400ADF838 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24D924BF1B5452C6002F9D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D924BE1B5452C6002F9D81 /* AppDelegate.swift */; };
