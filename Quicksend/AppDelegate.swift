@@ -11,7 +11,7 @@ import Cocoa
 private let serverURLKey = "serverURL"
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate, NSUserNotificationCenterDelegate {
     var statusItemView: StatusItemView!
     var uploader = Uploader()
     
@@ -28,6 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
         defaults.registerDefaults([
             "awsRegion": "us-east-1"
         ])
+        
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
     
     func uploadFile(fileURL: NSURL) {
@@ -67,6 +69,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, StatusItemViewDelegate {
     
     func statusItemView(view: StatusItemView, didReceiveFileURL fileURL: NSURL) {
         uploadFile(fileURL)
+    }
+    
+    // MARK: - NSUserNotificationCenterDelegate
+
+    // Always present notifications, even if app is key
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
     }
 }
 
